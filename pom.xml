@@ -7,10 +7,10 @@
 		<artifactId>spring-boot-starter-parent</artifactId>
     	<version>1.5.3.RELEASE</version>
 	</parent>
-	<artifactId>spring-boot-sample-web-jsp</artifactId>
+	<artifactId>spring-boot-slf4J</artifactId>
 	<packaging>jar</packaging>
-	<name>Spring Boot Web JSP Sample</name>
-	<description>Spring Boot Web JSP Sample</description>
+	<name>spring boot slf4J</name>
+	<description>spring boot slf4J</description>
 	<url>http://projects.spring.io/spring-boot/</url>
 	<organization>
 		<name>Pivotal Software, Inc.</name>
@@ -19,6 +19,9 @@
 	<properties>
 		<main.basedir>${basedir}/../..</main.basedir>
 		<m2eclipse.wtp.contextRoot>/</m2eclipse.wtp.contextRoot>
+                <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+                <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+	        <java.version>1.8</java.version>
 	</properties>
 	<dependencies>
 		<!-- Compile -->
@@ -47,6 +50,11 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+		<!-- Starter -->
+               <!-- <dependency>
+                        <groupId>org.springframework.boot</groupId>
+                        <artifactId>spring-boot-starter-batch</artifactId>
+                </dependency>-->
 	</dependencies>
 	<build>
 		<plugins>
