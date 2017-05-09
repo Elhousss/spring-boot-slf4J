@@ -4,7 +4,6 @@ node {
       // Get the Maven tool.
       // ** NOTE: This 'M3' Maven tool must be configured
       // **       in the global configuration.  
-      deleteDir()
       mvnHome = tool 'M3'
    }
    stage('Build') {
@@ -16,5 +15,8 @@ node {
    }
    stage('Run') {
       sh "docker run --name app -p 8080:8080 -d app-spring-boot-slf4J"
+   }
+   stage('Clean-workspace') {
+      deleteDir()
    }
 }
