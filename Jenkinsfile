@@ -5,7 +5,7 @@ node {
       // ** NOTE: This 'M3' Maven tool must be configured
       // **       in the global configuration.  
       deleteDir()
-      mvnHome = '/home/ubuntu/apache-maven-3.5.0'
+      mvnHome = tool 'M3'
    }
    stage('Build') {
       // Run the maven build
