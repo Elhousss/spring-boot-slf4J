@@ -1,8 +1,6 @@
 node {
    def mvnHome
    stage('Preparation') { // for display purposes
-      // Get some code from a GitHub repository
-      git 'https://github.com/Elhousss/spring-boot-slf4J.git'
       // Get the Maven tool.
       // ** NOTE: This 'M3' Maven tool must be configured
       // **       in the global configuration.           
@@ -10,10 +8,12 @@ node {
    }
    stage('Build') {
       // Run the maven build
-         sh "'${mvnHome}/bin/mvn' -Dmaven.test.failure.ignore clean package"
+      sh "'${mvnHome}/bin/mvn' clean package"
    }
-   stage('Results') {
-      junit '**/target/surefire-reports/TEST-*.xml'
-      archive 'target/*.jar'
+   stage('Dockerize') {
+      sh "docker build -t app-spring-boot-slf4J"
+   }
+   stage('Run') {
+      sh "docker run --name app -p 8080:8080 -d app-spring-boot-slf4J"
    }
 }
