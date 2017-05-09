@@ -16,7 +16,4 @@ node {
    stage('Run') {
       sh "docker run --name app -p 8080:8080 -d app-spring-boot-slf4J"
    }
-   stage('Clean-workspace') {
-      deleteDir()
-   }
 }
