@@ -3,7 +3,8 @@ node {
    stage('Preparation') { // for display purposes
       // Get the Maven tool.
       // ** NOTE: This 'M3' Maven tool must be configured
-      // **       in the global configuration.           
+      // **       in the global configuration.  
+      deleteDir()
       mvnHome = '/home/ubuntu/apache-maven-3.5.0'
    }
    stage('Build') {
