@@ -26,6 +26,7 @@
       }
         
       stage('Dockerize') {
+         sh "pwd"
          sh "docker build -t app-spring-boot-slf4J"
       }
       //stage('Run') {
