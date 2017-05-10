@@ -16,23 +16,20 @@
             //archiveArtifacts '**/target/*.jar'
          
       }
-      sh "echo befor deploye"
       stage('Deploy') {
-          sh "echo in deploy"
           // copy file to target location
           sh 'cp target/*.jar /tmp/'
           // start the application
           sh 'java -jar /tmp/*.jar '
           // wait for application to respond
           sh 'while ! httping -qc1 http://localhost:8090 ; do sleep 1 ; done'
-          sh "echo last in deploy"
       }
-      sh "echo after deploy"      
         
-      //stage('Dockerize') {
-      //   sh "docker build -t app-spring-boot-slf4J"
-      //}
+      stage('Dockerize') {
+         sh "docker build -t app-spring-boot-slf4J"
+      }
       //stage('Run') {
       //   sh "docker run --name app -p 8080:8080 -d app-spring-boot-slf4J"
       //}
    }
+
