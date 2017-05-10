@@ -18,9 +18,7 @@
       }
       stage('Deploy') {
                 
-                //sh "java -jar /target/spring-boot-slf4J-1.5.3.RELEASE.jar"
-                if (currentBuild.result == null || currentBuild.result == 'SUCCESS') { ①
-                  sh 'make publish'
+               
                 }
 
             
