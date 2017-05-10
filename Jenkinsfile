@@ -16,13 +16,9 @@
             archiveArtifacts '**/target/*.jar'
          
       }
-      stage('Deploy') {
-                
-               
-                }
-
+     
             
-        }
+        
       //stage('Dockerize') {
       //   sh "docker build -t app-spring-boot-slf4J"
       //}
