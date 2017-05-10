@@ -2,6 +2,7 @@ node {
    def mvnHome
    stage('Preparation') { // for display purposes
       // Get the Maven tool.
+      git "https://github.com/Elhousss/spring-boot-slf4J.git"
       // ** NOTE: This 'M3' Maven tool must be configured
       // **       in the global configuration.  
       mvnHome = tool 'M3'
