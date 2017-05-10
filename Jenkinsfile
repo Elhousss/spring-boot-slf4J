@@ -17,9 +17,12 @@
          
       }
       stage('Deploy') {
-                sh "cd /var/jenkins_home/workspace/spring-boot-slf4j/target"
-                sh "pwd"
-                sh "java -jar /target/spring-boot-slf4J-1.5.3.RELEASE.jar"
+                
+                //sh "java -jar /target/spring-boot-slf4J-1.5.3.RELEASE.jar"
+                if (currentBuild.result == null || currentBuild.result == 'SUCCESS') { ①
+                  sh 'make publish'
+                }
+
             
         }
       //stage('Dockerize') {
