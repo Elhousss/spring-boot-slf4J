@@ -42,12 +42,11 @@ public class SampleWebJspApplicationTests {
 
 	@Autowired
 	private TestRestTemplate restTemplate;
-
+	
 	@Test
 	public void testJspWithEl() throws Exception {
-		ResponseEntity<String> entity = this.restTemplate.getForEntity("/", String.class);
+		ResponseEntity<String> entity = this.restTemplate.getForEntity("/log/error?message=test", String.class);
 		assertThat(entity.getStatusCode()).isEqualTo(HttpStatus.OK);
-		assertThat(entity.getBody()).contains("/resources/text.txt");
-	}
-
+	}	
+	
 }
