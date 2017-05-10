@@ -13,9 +13,10 @@
          
             // Run the maven build
             sh "'${mvnHome}/bin/mvn' clean package"
-            archiveArtifacts '**/target/*.jar'
+            //archiveArtifacts '**/target/*.jar'
          
-      }echo "befor deploye"
+      }
+      echo "befor deploye"
       satge('Deploy') {
          echo "in deploy"
           // copy file to target location
