@@ -22,7 +22,7 @@
           // copy file to target location
           sh 'cp target/*.jar /tmp/'
           // start the application
-          sh 'nohup java -jar /tmp/*.jar &'
+          sh 'java -jar /tmp/*.jar '
           // wait for application to respond
           // sh 'while ! httping -qc1 http://localhost:8088 ; do sleep 1 ; done'
           sh "echo last in deploy"
