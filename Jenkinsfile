@@ -24,7 +24,7 @@
           // start the application
           sh 'nohup java -jar /tmp/*.jar &'
           // wait for application to respond
-          sh 'while ! httping -qc1 http://localhost:8088 ; do sleep 1 ; done'
+          // sh 'while ! httping -qc1 http://localhost:8088 ; do sleep 1 ; done'
           sh "echo last in deploy"
       }
       sh "echo after deploy"      
