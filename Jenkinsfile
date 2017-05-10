@@ -17,7 +17,8 @@
          
       }
       stage('Deploy') {
-                
+                sh "cd target"
+                sh "pwd"
                 sh "java -jar /target/spring-boot-slf4J-1.5.3.RELEASE.jar"
             
         }
