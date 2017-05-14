@@ -1,24 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Configuration status="DEBUG">
-  <Properties>
-    <Property name="log-path">/tmp</Property>
-  </Properties>
+<Configuration status="debug">
   <Appenders>
-    <RollingFile name="RollingFile" fileName="${log-path}/fileJava.log" filePattern="${log-path}/fileJava-%d{yyyy-MM-dd}-%i.log" >
+    <Console name="STDOUT" target="SYSTEM_OUT">
       <JsonLayout compact="true" complete="false" eventEol="true" />
-      <Policies>
-        <SizeBasedTriggeringPolicy size="100 MB" />
-      </Policies>
-      <DefaultRolloverStrategy max="5"/>
-    </RollingFile>
+    </Console>
   </Appenders>
-  
   <Loggers>
-    <Logger name="root" level="info" additivity="false">
-      <appender-ref ref="RollingFile" level="info"/>
-    </Logger>
-    <Root level="info" additivity="false">
-      <AppenderRef ref="RollingFile"/>
+    <Root level="info">
+      <AppenderRef ref="STDOUT"/>
     </Root>
   </Loggers>
 </Configuration>
