@@ -20,7 +20,7 @@ node{
     // start the application
     sh 'nohup java -jar /tmp/*.jar &'
     // wait for application to respond
-    sh 'while ! httping -qc1 http://localhost:8090 ; do sleep 1 ; done'
+    // sh 'while ! httping -qc1 http://localhost:8090 ; do sleep 1 ; done'
 }
  
 node{
