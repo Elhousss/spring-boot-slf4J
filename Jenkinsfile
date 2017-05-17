@@ -23,7 +23,7 @@ node{
     // sh 'while ! httping -qc1 http://localhost:8090 ; do sleep 1 ; done'
 }
  
-node{
+/*node{
     stage 'Smoketest'
     def workspacePath = pwd()
     sh "curl --retry-delay 10 --retry 5 http://localhost:8090/info -o ${workspacePath}/info.json"
@@ -34,7 +34,7 @@ node{
     }
 }
  
-/*def deploymentOk(){
+  def deploymentOk(){
     def workspacePath = pwd()
     expectedCommitid = new File("${workspacePath}/expectedCommitid.txt").text.trim()
     actualCommitid = readCommitidFromJson()
