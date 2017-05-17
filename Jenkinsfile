@@ -34,7 +34,7 @@ node{
     }
 }
  
-def deploymentOk(){
+/*def deploymentOk(){
     def workspacePath = pwd()
     expectedCommitid = new File("${workspacePath}/expectedCommitid.txt").text.trim()
     actualCommitid = readCommitidFromJson()
@@ -49,4 +49,4 @@ def readCommitidFromJson() {
     def json = slurper.parseText(new File("${workspacePath}/info.json").text)
     def commitid = json.app.commitid
     return commitid
-}
+}*/
