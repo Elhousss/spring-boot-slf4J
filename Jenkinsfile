@@ -1,6 +1,6 @@
 import groovy.json.JsonSlurper;
  
-node{
+node('slave') {
     stage 'Build, Test and Package'
     env.PATH = "${tool 'M3'}/bin:${env.PATH}"
     git url: "https://github.com/Elhousss/spring-boot-slf4J.git"
@@ -11,7 +11,7 @@ node{
     sh "mvn clean install -Dcommitid=${commitid}"
 }
  
-node{
+node('slave') {
     stage 'Stop, Deploy and Start'
     // shutdown
     sh 'curl -X POST http://localhost:8090/shutdown || true'
