@@ -18,7 +18,7 @@ node('slave') {
     // copy file to target location
     sh 'cp target/*.jar /tmp/'
     // start the application
-    sh 'nohup java -jar /tmp/*.jar'
+    sh 'nohup java -jar /tmp/*.jar &'
     // wait for application to respond
     // sh 'while ! httping -qc1 http://localhost:8090 ; do sleep 1 ; done'
 }
