@@ -23,6 +23,23 @@ node('slave') {
     // sh 'while ! httping -qc1 http://localhost:8090 ; do sleep 1 ; done'
 }
  
+node('slave') {
+    def app 
+    stage 'Build image'
+    /* This builds the actual image; synonymous to
+     * docker build on the command line */
+
+     app = docker.build("Elhousss/spring-boot-slf4J")
+ 
+     stage 'Build image'
+     /* we'll push the image with two tags:
+     * First, the incremental build number from Jenkins
+     * Second, the 'latest' tag. */
+     withDockerRegistry([credentialsId: 'elhousss', url: 'https://hub.docker.com/r/elhousss/']) {
+        app.push("${env.BUILD_NUMBER}")
+        app.push("latest")
+     }        
+}
 /*node{
     stage 'Smoketest'
     def workspacePath = pwd()
