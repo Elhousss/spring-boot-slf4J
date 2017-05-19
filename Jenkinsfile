@@ -11,7 +11,7 @@ node('slave') {
     sh "mvn clean install -DskipTests -Dcommitid=${commitid}"
 }
  
-node('slave') {
+/*node('slave') {
     stage 'Stop, Deploy and Start'
     // shutdown
     sh 'curl -X POST http://localhost:8090/shutdown || true'
@@ -21,7 +21,7 @@ node('slave') {
     sh 'nohup java -jar /tmp/*.jar &'
     // wait for application to respond
     // sh 'while ! httping -qc1 http://localhost:8090 ; do sleep 1 ; done'
-}
+}*/
  
 node('slave') {
     def app 
@@ -31,7 +31,7 @@ node('slave') {
 
      app = docker.build("elhousss/spring-boot-slf4j")
  
-     stage 'Build image'
+     stage 'Push image'
      /* we'll push the image with two tags:
      * First, the incremental build number from Jenkins
      * Second, the 'latest' tag. */
