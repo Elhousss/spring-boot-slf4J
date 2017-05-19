@@ -29,7 +29,7 @@ node('slave') {
     /* This builds the actual image; synonymous to
      * docker build on the command line */
 
-     app = docker.build("elhousss/spring-boot-slf4J")
+     app = docker.build("elhousss/spring-boot-slf4j")
  
      stage 'Build image'
      /* we'll push the image with two tags:
