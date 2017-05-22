@@ -1,7 +1,7 @@
 import groovy.json.JsonSlurper;
  
 node('slave') {
-    stage 'Build, Test and Package'
+ stage ('Build, Test and Package'){
     env.PATH = "${tool 'M3'}/bin:${env.PATH}"
     git url: "https://github.com/Elhousss/spring-boot-slf4J.git"
     // workaround, taken from https://github.com/jenkinsci/pipeline-examples/blob/master/pipeline-examples/gitcommit/gitcommit.groovy
@@ -9,6 +9,7 @@ node('slave') {
     def workspacePath = pwd()
     sh "echo ${commitid} > ${workspacePath}/expectedCommitid.txt"
     sh "mvn clean install -DskipTests -Dcommitid=${commitid}"
+ }
 }
  
 /*node('slave') {
@@ -25,13 +26,14 @@ node('slave') {
  
 node('slave') {
     def app 
-    stage 'Build image'
+ stage ('Build image'){
     /* This builds the actual image; synonymous to
      * docker build on the command line */
 
      app = docker.build("elhousss/spring-boot-slf4j")
+ }
  
-     stage 'Push image'
+ stage ('Push image'){
      /* we'll push the image with two tags:
      * First, the incremental build number from Jenkins
      * Second, the 'latest' tag. */
@@ -40,7 +42,15 @@ node('slave') {
      withDockerRegistry([credentialsId: 'elhousss', url: 'https://index.docker.io/v1/']) {
         app.push("${env.BUILD_NUMBER}")
         app.push("latest")
-     }        
+     }
+ }
+ stage ('Run Application') {
+      // Start database container here
+      // sh 'docker run -d --name db -p 8091-8093:8091-8093 -p 11210:11210 arungupta/oreilly-couchbase:latest'
+
+      // Run application using Docker image
+      sh "docker run -d -p 8090:8090 -v /tmp:/tmp --name image-app elhousss/spring-boot-slf4j"
+ }
 }
 /*node{
     stage 'Smoketest'
