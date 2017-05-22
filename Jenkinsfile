@@ -45,9 +45,6 @@ node('slave') {
      }
  }
  stage ('Run Application') {
-      // Start database container here
-      // sh 'docker run -d --name db -p 8091-8093:8091-8093 -p 11210:11210 arungupta/oreilly-couchbase:latest'
-
       // Run application using Docker image
       sh "docker run -d -p 8090:8090 -v /tmp:/tmp --name image-app elhousss/spring-boot-slf4j"
  }
