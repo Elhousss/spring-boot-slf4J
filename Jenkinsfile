@@ -39,7 +39,7 @@ node('slave') {
 
      withDockerRegistry([credentialsId: 'elhousss', url: 'https://index.docker.io/elhousss/spring-boot-slf4j/']) {
         app.push("${env.BUILD_NUMBER}")
-        app.push("latest")
+        //app.push("latest")
      }        
 }
 /*node{
