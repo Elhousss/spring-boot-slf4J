@@ -37,7 +37,7 @@ node('slave') {
      * Second, the 'latest' tag. */
      // https://hub.docker.com/r/elhousss/spring-boot-slf4j
 
-     withDockerRegistry([credentialsId: 'elhousss', url: 'https://index.docker.io/elhousss/spring-boot-slf4j/']) {
+     withDockerRegistry([credentialsId: 'elhousss', url: 'https://index.docker.io/v1/']) {
         app.push("${env.BUILD_NUMBER}")
         app.push("latest")
      }        
