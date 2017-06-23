@@ -44,11 +44,17 @@ node('slave') {
         app.push("latest")
      }
  }
- stage ('Run Application') {
+ 
+}
+
+node('webserver') {
+  stage ('Run Application') {
+      sh "dicker pull docker pull elhousss/spring-boot-slf4j"
       // Run application using Docker image
       sh "docker run -d -p 8090:8090 -v /tmp:/tmp --name image-app elhousss/spring-boot-slf4j"
  }
 }
+
 /*node{
     stage 'Smoketest'
     def workspacePath = pwd()
