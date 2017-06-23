@@ -49,7 +49,7 @@ node('slave') {
 
 node('webserver') {
   stage ('Run Application') {
-      sh "docker pull docker pull elhousss/spring-boot-slf4j"
+      sh "docker pull elhousss/spring-boot-slf4j"
       // Run application using Docker image
       sh "docker run -d -p 8090:8090 -v /tmp:/tmp --name image-app elhousss/spring-boot-slf4j"
  }
